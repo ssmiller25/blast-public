@@ -7,3 +7,6 @@ kind: Kustomization
 resources:
 # references to local directories, which themselves with have a kustomization.yaml with references to blast-apps repo and
 # necessary modifiecation
+
+- manifests/observiq-events
+- manifests/observiq-logs

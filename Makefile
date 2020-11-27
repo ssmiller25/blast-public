@@ -7,7 +7,7 @@ CIVO_CMD?="civo"
 # For Docker
 CIVO_TEST_CLUSTER_NAME?=blast-public
 CIVO_KUBECONFIG?=kubeconfig.$(CIVO_TEST_CLUSTER_NAME)
-CIVO_APPS?=cert-manager Longhorn sealed-secrets prometheus-operator
+CIVO_APPS?=cert-manager,Longhorn,sealed-secrets,prometheus-operator
 KUBECTL?=kubectl --kubeconfig=$(CIVO_KUBECONFIG) 
 
 
@@ -33,7 +33,7 @@ cluster-clean:
 
 $(CIVO_KUBECONFIG):
 	@echo "Creating/retriving $(CIVO_TEST_CLUSTER_NAME)"
-	@if ! $(CIVO_CMD) k3s config $(CIVO_TEST_CLUSTER_NAME) > $(CIVO_KUBECONFIG); then \
+	@if ! $(CIVO_CMD) k3s config $(CIVO_TEST_CLUSTER_NAME) > $(CIVO_KUBECONFIG) 2>/dev/null; then \
 		rm $(CIVO_KUBECONFIG); \
 		$(CIVO_CMD) k3s create $(CIVO_TEST_CLUSTER_NAME) -n 3 --size g2.small -a $(CIVO_APPS) --wait; \
 		$(CIVO_CMD) k3s config $(CIVO_TEST_CLUSTER_NAME) > $(CIVO_KUBECONFIG); \

@@ -1,2 +1,5 @@
 auth
 kubeconfig.*
+# Secrets for secrets-generator
+*.sec
+*.env
