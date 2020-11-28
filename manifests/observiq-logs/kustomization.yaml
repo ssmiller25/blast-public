@@ -3,11 +3,10 @@ kind: Kustomization
 
 namespace: observiq-logs
 
-secretGenerator:
+secretGenerator:  
 - name: observiq-agent-secrets
   envs:
   - oiq.env
 
 resources:
- - ns.yaml
- - oiq.yaml
+  - git::http://github.com/ssmiller25/blast-apps/observiq-logs?ref=main

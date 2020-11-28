@@ -9,6 +9,4 @@ secretGenerator:
   - oiq.env
 
 resources:
- - ns.yaml
- - oiq.yaml
- - rolebinding.yaml
+  - git::http://github.com/ssmiller25/blast-apps/observiq-events?ref=main
