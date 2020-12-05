@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: wikijs
+
+secretGenerator:
+  - name: wikijs-postgresql
+    envs:
+    - wikijs.env
+
+resources:
+  - git::http://github.com/ssmiller25/blast-apps/wikijs?ref=wikijs
