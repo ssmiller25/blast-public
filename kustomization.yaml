@@ -12,3 +12,4 @@ resources:
 
 - manifests/observiq-events
 - manifests/observiq-logs
+- manifests/wikijs
